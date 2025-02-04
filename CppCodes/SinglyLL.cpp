@@ -42,7 +42,7 @@ void display(Node* Head)
         temp=temp->next;
     }
 }
-void deleteElement(Node* Head,int i,int j)
+void deleteElement(Node* Head,int i=1,int j)
 {                     // Deletes ith repetation of j
     int counter1;
     // cout<<"Hello";

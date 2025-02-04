@@ -42,7 +42,7 @@ void display(Node* Head)
         temp=temp->next;
     }
 }
-void deleteElement(Node* Head,int i=1,int j)
+void deleteElement(Node* Head,int j,int i=1)
 {                     // Deletes ith repetation of j
     int counter1;
     // cout<<"Hello";
@@ -50,7 +50,7 @@ void deleteElement(Node* Head,int i=1,int j)
     Node* temp=Head;
     while (counter1<i){
         temp=temp->next;
-        if (temp->value==j){
+        if (temp->next->value==j){
             counter1++;
         }
         cout<<"Hello";
@@ -71,7 +71,7 @@ int main(){
     }
     insertAsIthElement(Head,4,11);
     // deleteIthElement(Head,7);
-    deleteElement(Head, 3, 4);
+    deleteElement(Head, 4);
     cout<<"Kindly if you want to enter starting element use That function. "<<endl;
     display(Head);
 }

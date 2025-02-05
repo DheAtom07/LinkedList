@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 struct Node{
     int value;
     Node* next;
@@ -11,23 +10,39 @@ struct Node{
         previous=NULL;
     }
 };
-
+void insertFirstElement(Node* &Head,Node* &Back,int v)
+{
+    Node* tempNode=new Node(v);
+    Back=tempNode;
+    Head=tempNode;
+}
 void insertInBeginning(Node* &Head,Node* &Back,int a){
     Node* tempnode=new Node(a);
-    tempnode->next=Head;
-    Back=tempnode;
-    Head=tempnode;
-    Back=Head;
+    if (Head==NULL && Back==NULL){
+        insertFirstElement(Head,Back,a);
+    }
+    else{
+        tempnode->next=Head;
+        Head->previous=tempnode;
+        Head=tempnode;
+    }
 }
-
-void display(Node* Head){
+void displayFromFront(Node* Head){
     Node* temp=Head;
     while (temp!=NULL){
         cout<<" -> "<<temp->value;
         temp=temp->next;
     }
+    cout<<endl;
 }
-
+void displayReverseOrder(Node* Back){
+    Node* tmp=Back;
+    while (tmp!=NULL){
+        cout<<" -> "<<tmp->value;
+        tmp=tmp->previous;
+    }
+    cout<<endl;
+}
 int main(){
     Node* Head=NULL;
     Node* Back=NULL;
@@ -37,5 +52,6 @@ int main(){
         cin>>j;
         insertInBeginning(Head,Back,j);
     }
-    display(Head);
+    displayFromFront(Head);
+    displayReverseOrder(Back);
 }

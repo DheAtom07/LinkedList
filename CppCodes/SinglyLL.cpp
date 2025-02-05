@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
-struct Node{
+struct Node
+{
     int value;
     Node* next;
     Node (int v){
@@ -13,6 +14,15 @@ void insertAtStarting(Node* &Head,int v)
     Node* newElement=new Node(v);
     newElement->next=Head;
     Head=newElement;
+}
+void insertAtEnd(Node* Head,int j){
+    Node* element=new Node(j);
+    Node* tmp=Head;
+    while (tmp->next!=NULL){
+        tmp=tmp->next;
+    }
+    tmp->next=element;
+    tmp->next->next=NULL;
 }
 void insertAsIthElement(Node* Head,int i, int j)
 {
@@ -72,6 +82,7 @@ int main(){
     insertAsIthElement(Head,4,11);
     // deleteIthElement(Head,7);
     deleteElement(Head, 4);
+    insertAtEnd(Head,111);
     cout<<"Kindly if you want to enter starting element use That function. "<<endl;
     display(Head);
 }

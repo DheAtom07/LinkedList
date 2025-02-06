@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
-struct Node{
+struct Node
+{
     int value;
     Node* next;
     Node* previous;
@@ -16,7 +17,8 @@ void insertFirstElement(Node* &Head,Node* &Back,int v)
     Back=tempNode;
     Head=tempNode;
 }
-void insertInBeginning(Node* &Head,Node* &Back,int a){
+void insertInBeginning(Node* &Head,Node* &Back,int a)
+{
     Node* tempnode=new Node(a);
     if (Head==NULL && Back==NULL){
         insertFirstElement(Head,Back,a);
@@ -27,7 +29,20 @@ void insertInBeginning(Node* &Head,Node* &Back,int a){
         Head=tempnode;
     }
 }
-void displayFromFront(Node* Head){
+void insertInEnding(Node* &Head,Node* &Back,int v)
+{
+    Node* tempnode=new Node(v);
+    if (Head==NULL && Back==NULL){
+        insertFirstElement(Head,Back,v);
+    }
+    else{
+        tempnode->previous=Back;
+        Back->next=tempnode;
+        Back=tempnode;
+    }
+}
+void displayFromFront(Node* Head)
+{
     Node* temp=Head;
     while (temp!=NULL){
         cout<<" -> "<<temp->value;
@@ -35,7 +50,8 @@ void displayFromFront(Node* Head){
     }
     cout<<endl;
 }
-void displayReverseOrder(Node* Back){
+void displayReverseOrder(Node* Back)
+{
     Node* tmp=Back;
     while (tmp!=NULL){
         cout<<" -> "<<tmp->value;
@@ -52,6 +68,8 @@ int main(){
         cin>>j;
         insertInBeginning(Head,Back,j);
     }
+    insertInEnding(Head,Back,4000);
+    insertInEnding(Head,Back,6900);
     displayFromFront(Head);
     displayReverseOrder(Back);
 }

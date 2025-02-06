@@ -59,6 +59,21 @@ void displayReverseOrder(Node* Back)
     }
     cout<<endl;
 }
+void insertElementAsIndex(Node* &Head,Node* &Back,int n,int v)
+{
+    Node* element=new Node(v);
+    if(Head==NULL && Back==NULL){
+        insertFirstElement(Head,Back,v);
+    }
+    Node* temp=Head;
+    for(int k=2;k<n;k++){
+        temp=temp->next;
+    }
+    element->next=temp->next;
+    element->previous=temp;
+    (temp->next)->previous=element;
+    temp->next=element;
+}
 int main(){
     Node* Head=NULL;
     Node* Back=NULL;
@@ -70,6 +85,7 @@ int main(){
     }
     insertInEnding(Head,Back,4000);
     insertInEnding(Head,Back,6900);
+    insertElementAsIndex(Head,Back,4,69);
     displayFromFront(Head);
     displayReverseOrder(Back);
 }

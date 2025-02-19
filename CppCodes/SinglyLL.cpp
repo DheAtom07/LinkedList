@@ -15,7 +15,8 @@ void insertAtStarting(Node* &Head,int v)
     newElement->next=Head;
     Head=newElement;
 }
-void insertAtEnd(Node* Head,int j){
+void insertAtEnd(Node* Head,int j)
+{
     Node* element=new Node(j);
     Node* tmp=Head;
     while (tmp->next!=NULL){
